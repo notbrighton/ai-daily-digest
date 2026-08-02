@@ -52,9 +52,10 @@ jobs:
       - name: 🚀 Run AI Daily Digest Generator
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
-          RSS_FEEDS: ${{ secrets.RSS_FEEDS }}
-          LANGUAGE: ${{ secrets.LANGUAGE }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL || 'gpt-4o-mini' }}
+          RSS_FEEDS: ${{ secrets.RSS_FEEDS || 'https://news.ycombinator.com/rss,https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml' }}
+          MAX_PER_FEED: ${{ secrets.MAX_PER_FEED || '4' }}
+          LANGUAGE: ${{ secrets.LANGUAGE || 'zh' }}
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
         run: |
           python main.py
