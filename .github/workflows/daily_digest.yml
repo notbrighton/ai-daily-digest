@@ -1,0 +1,74 @@
+name: 🤖 AI Daily Digest Automation
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at 00:00 UTC
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: 📦 Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: ✅ Run Tests
+        run: python -m unittest discover -s tests
+
+  build-and-deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: 📦 Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 🚀 Run AI Daily Digest Generator
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+          RSS_FEEDS: ${{ secrets.RSS_FEEDS }}
+          LANGUAGE: ${{ secrets.LANGUAGE }}
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        run: |
+          python main.py
+
+      - name: 💾 Commit & Push Digest Archives
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add digests/ index.html
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update daily digest [skip ci]" && git push)
+
+      - name: 🌐 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          destination_dir: ./
