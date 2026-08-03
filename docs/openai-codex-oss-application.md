@@ -1,47 +1,98 @@
-# OpenAI Codex for Open Source Application Draft
+# OpenAI Codex for Open Source Application Notes
 
-Use this as a starting point when applying to the OpenAI Codex for Open Source program.
+Use this file when you apply later. The wording below is intentionally plain and not over-polished.
 
-## Repository URL
+## Basic Fields
 
-`https://github.com/jieone/ai-daily-digest`
+First name:
 
-## Maintainer Role
+```text
+bright
+```
 
-I am the primary maintainer of AI Daily Digest. I created and maintain the project, review changes, manage the roadmap, improve reliability, and keep the automation workflow usable for developers and small teams.
+Last name:
 
-## Project Description
+```text
+N/A
+```
 
-AI Daily Digest is an open-source automation tool that turns noisy developer and technology RSS feeds into a daily intelligence briefing. It fetches configurable RSS sources, cleans and deduplicates entries, summarizes them with OpenAI when an API key is available, falls back gracefully when it is not, archives the result as Markdown, renders a static dashboard, and can publish automatically through GitHub Actions and GitHub Pages.
+Email:
 
-The goal is to help developers, maintainers, and indie builders keep up with AI and technology news without manually scanning many feeds every day.
+```text
+Use the email address connected to your ChatGPT account.
+```
 
-## Why Codex Would Help
+GitHub username:
 
-Codex would help with ongoing maintainer work such as:
+```text
+bright1472
+```
 
-- improving RSS extraction quality for sources that provide sparse metadata;
-- adding tests for feed parsing, HTML rendering, configuration validation, and notification adapters;
-- reviewing pull requests and catching regressions before daily automation runs;
-- building a small CLI configuration flow for non-expert users;
-- maintaining GitHub Actions workflows and release packaging;
-- improving webhook integrations for Discord, Telegram, Feishu/Lark, and DingTalk.
+GitHub repository URL:
 
-## Current Maintenance Signals
+```text
+https://github.com/bright1472/ai-daily-digest
+```
 
-- The project has a working end-to-end daily digest pipeline.
-- It includes GitHub Actions automation for tests and scheduled publishing.
-- It has a documented roadmap, contribution guide, issue templates, pull request template, and changelog.
-- It includes a standard-library test suite covering core parsing and rendering behavior.
+Project demo URL, if the form asks for one:
 
-## Near-Term Roadmap
+```text
+https://bright1472.github.io/ai-daily-digest/
+```
 
-- Improve Hacker News extraction when RSS entries only expose comment placeholders.
-- Add feed categories and per-source limits.
-- Add provider-specific webhook payloads.
-- Add historical views across archived digests.
-- Publish a first tagged release and keep a regular changelog.
+Role:
 
-## Short Form Answer
+```text
+Primary maintainer
+```
 
-I am the primary maintainer of AI Daily Digest, an open-source daily technology briefing generator for developers. The project automates RSS collection, AI-assisted summarization, Markdown archiving, static dashboard rendering, webhook notifications, and GitHub Pages publishing. Codex would help me maintain and improve the project by accelerating test coverage, PR review, RSS extraction improvements, release workflows, and user-facing configuration features.
+OpenAI Organization ID:
+
+```text
+Paste your org-... ID from https://platform.openai.com/settings/organization/general
+```
+
+## Why Does This Repository Qualify?
+
+```text
+I am the primary maintainer of AI Daily Digest. I started this project because I wanted a simple way to follow AI and technology news without opening many different sites every day.
+
+The project reads RSS feeds, cleans the article data, creates a daily digest, saves it as Markdown, and publishes a static page with GitHub Actions and GitHub Pages. It can use OpenAI for better summaries, but it also has a fallback mode so the project still works without an API key.
+
+I believe it is eligible because it is a public open-source project with a working automation flow, tests, documentation, contribution guidelines, issue templates, and a roadmap. Codex would help me keep improving it, especially around better RSS extraction, more tests, release automation, and webhook integrations.
+```
+
+## I Am Interested In
+
+Recommended checkbox:
+
+```text
+API credits for my project
+```
+
+Skip unless the project has a clear security angle:
+
+```text
+Codex Security
+```
+
+## How Will You Use API Credits For Your Project?
+
+```text
+I would use the API credits to run the daily digest more often while I improve the project. The main uses would be testing better summary prompts, checking feed quality, and adding small maintainer tools like issue triage and release note drafts.
+```
+
+## Anything Else We Should Know?
+
+```text
+This is still an early project, but it is public and working. It has a live GitHub Pages demo, tests, CI, docs, issue templates, and a roadmap. I am the main maintainer and plan to keep improving the RSS extraction, webhook support, and release workflow.
+```
+
+## Before Submitting
+
+- GitHub profile is public.
+- Repository is public.
+- GitHub Pages demo opens correctly.
+- Actions workflow has one successful run.
+- Repository description, website, and topics are set.
+- Optional but helpful: a few real stars, 2-3 real issues, and one small PR or release.
