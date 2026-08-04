@@ -1,6 +1,7 @@
 import html
 import re
 import datetime
+from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
 
 def render_inline(markdown: str) -> str:
@@ -80,18 +81,35 @@ def markdown_to_html(md_text: str) -> str:
 
     return "\n".join(parts)
 
-def export_html(md_content: str, articles_count: int, feeds_count: int, template_dir: str = "templates", output_path: str = "index.html") -> str:
+def list_digest_archives(archive_dir: str = "digests", limit: int = 7):
+    archives = []
+    for path in sorted(Path(archive_dir).glob("digest_*.md"), reverse=True):
+        date_match = re.search(r'digest_(\d{4})(\d{2})(\d{2})\.md$', path.name)
+        if not date_match:
+            continue
+        year, month, day = date_match.groups()
+        archives.append({
+            "label": f"{year}-{month}-{day}",
+            "href": f"{archive_dir}/{path.name}",
+        })
+        if len(archives) >= limit:
+            break
+    return archives
+
+def export_html(md_content: str, articles_count: int, feeds_count: int, template_dir: str = "templates", output_path: str = "index.html", archive_dir: str = "digests") -> str:
     env = Environment(loader=FileSystemLoader(template_dir))
     template = env.get_template("index.html.jinja2")
     
     content_html = markdown_to_html(md_content)
     date_str = datetime.date.today().strftime("%Y-%m-%d")
+    archives = list_digest_archives(archive_dir)
     
     rendered_html = template.render(
         date_str=date_str,
         articles_count=articles_count,
         feeds_count=feeds_count,
-        content_html=content_html
+        content_html=content_html,
+        archives=archives
     )
     
     with open(output_path, "w", encoding="utf-8") as f:

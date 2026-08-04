@@ -1,6 +1,8 @@
 import unittest
+from tempfile import TemporaryDirectory
+from pathlib import Path
 
-from src.exporters.html import markdown_to_html
+from src.exporters.html import list_digest_archives, markdown_to_html
 
 
 class HtmlExporterTests(unittest.TestCase):
@@ -27,6 +29,19 @@ class HtmlExporterTests(unittest.TestCase):
 
         self.assertNotIn("<script>", html)
         self.assertIn("&lt;script&gt;alert(1)&lt;/script&gt;", html)
+
+    def test_list_digest_archives_returns_recent_files_first(self):
+        with TemporaryDirectory() as temp_dir:
+            archive_dir = Path(temp_dir)
+            (archive_dir / "digest_20260802.md").write_text("# One", encoding="utf-8")
+            (archive_dir / "digest_20260804.md").write_text("# Three", encoding="utf-8")
+            (archive_dir / "notes.md").write_text("skip", encoding="utf-8")
+
+            archives = list_digest_archives(str(archive_dir))
+
+        self.assertEqual(archives[0]["label"], "2026-08-04")
+        self.assertTrue(archives[0]["href"].endswith("digest_20260804.md"))
+        self.assertEqual(len(archives), 2)
 
 
 if __name__ == "__main__":
