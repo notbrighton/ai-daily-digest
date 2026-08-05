@@ -32,6 +32,11 @@
     .article-summary { color: var(--text-secondary); font-size: 0.98rem; margin-bottom: 12px; }
     .article-summary a { color: #a5b4fc; }
     .key-takeaway { background: rgba(99, 102, 241, 0.08); border-left: 3px solid var(--accent); padding: 10px 16px; border-radius: 4px; font-size: 0.9rem; color: #c7d2fe; }
+    .archive-list { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .archive-list h2 { font-size: 1rem; margin-bottom: 12px; color: #fff; }
+    .archive-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .archive-links a { color: #c7d2fe; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 0.9rem; text-decoration: none; }
+    .archive-links a:hover { border-color: rgba(129, 140, 248, 0.65); color: #fff; }
     footer { text-align: center; margin-top: 40px; color: var(--text-secondary); font-size: 0.875rem; }
     footer a { color: #818cf8; text-decoration: none; }
   </style>
@@ -57,6 +62,16 @@
     </div>
     <div class="content-box">
       {{ content_html | safe }}
+      {% if archives %}
+      <section class="archive-list" aria-label="Recent digest archives">
+        <h2>Recent archives</h2>
+        <div class="archive-links">
+          {% for archive in archives %}
+          <a href="{{ archive.href }}">{{ archive.label }}</a>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
     </div>
   </main>
   <footer>
