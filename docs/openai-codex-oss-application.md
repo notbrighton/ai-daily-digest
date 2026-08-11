@@ -7,13 +7,31 @@ Use this file when you apply later. The wording below is intentionally plain and
 First name:
 
 ```text
-bright
+Brighton
 ```
 
 Last name:
 
 ```text
-N/A
+Carter
+```
+
+Full English name:
+
+```text
+Brighton Reed Carter
+```
+
+Common name:
+
+```text
+Brighton R.
+```
+
+Chinese name:
+
+```text
+布莱顿·里德·卡特
 ```
 
 Email:
@@ -25,19 +43,19 @@ Use the email address connected to your ChatGPT account.
 GitHub username:
 
 ```text
-bright1472
+notbrighton
 ```
 
 GitHub repository URL:
 
 ```text
-https://github.com/bright1472/ai-daily-digest
+https://github.com/notbrighton/ai-daily-digest
 ```
 
 Project demo URL, if the form asks for one:
 
 ```text
-https://bright1472.github.io/ai-daily-digest/
+https://notbrighton.github.io/ai-daily-digest/
 ```
 
 Role:
