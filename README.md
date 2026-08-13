@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/jieone/ai-daily-digest/actions"><img src="https://img.shields.io/github/actions/workflow/status/jieone/ai-daily-digest/daily_digest.yml?branch=main&style=flat-square&logo=github&label=Daily%20Build" alt="Build Status"></a>
+  <a href="https://github.com/notbrighton/ai-daily-digest/actions"><img src="https://img.shields.io/github/actions/workflow/status/notbrighton/ai-daily-digest/daily_digest.yml?branch=main&style=flat-square&logo=github&label=Daily%20Build" alt="Build Status"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License"></a>
   <a href="https://python.org"><img src="https://img.shields.io/badge/python-3.8%2B-brightgreen.svg?style=flat-square&logo=python&logoColor=white" alt="Python"></a>
   <a href="https://openai.com"><img src="https://img.shields.io/badge/AI-OpenAI%20Codex-orange.svg?style=flat-square&logo=openai&logoColor=white" alt="OpenAI"></a>
@@ -73,7 +73,7 @@ ai-daily-digest/
 ### 1. Installation
 
 ```bash
-git clone https://github.com/your-username/ai-daily-digest.git
+git clone https://github.com/notbrighton/ai-daily-digest.git
 cd ai-daily-digest
 pip install -r requirements.txt
 ```
